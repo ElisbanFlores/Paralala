@@ -1,2 +1,2 @@
-# Paralala
+# Paralela
 DAIRRy-BLUP
