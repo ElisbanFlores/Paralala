@@ -1,54 +1,49 @@
 DAIRRy-BLUP
 ============
 
+DAIRRy-BLUP: A high performance computing approach to genomic prediction
+
+A. De Coninck*1, J. Fostier†, S. Maenhout‡, B. De Baets*
+* KERMIT, Department of Mathematical Modelling, Statistics and Bioinformatics, Ghent University, B-9000
+Ghent, Belgium; † IBCN, Department of Information Technology, Ghent University - iMinds, B-9000 Ghent,
+Belgium; ‡ Progeno, B-9052 Zwijnaarde, Belgium
+
 A Distributed AI-REML Ridge Regression Best Linear Unbiased Prediction framework for genomic prediction.
 
 This software was developed by Arne De Coninck and can only be used for research purposes.
 
-Genomic datasets used for genomic prediction are constantly growing due to the decreasing costs of genotyping and increasing interest in improving agronomic performance of animals and plants. To be able to deal with those large-scale datasets, a distributed-memory framework was developed based on a message passing interface and a ScaLAPACK library. The complexity of the algorithm is defined by the number of SNPs included in the genomic prediction setting; the number of individuals only has a linear effect on the read-in time. To enhance performance it is advised to compile and execute DAIRRy-BLUP on an MPI-optimized machine.
+En la predicción genómica, los métodos comunes de análisis se basan en un marco de modelo mixto lineal para estimar los efectos de marcadores SNP y los valores de cría tanto de animales como de plantas. Ridge Regression – Best Linear Unbiased Prediction (RR-BLUP) se basa en la hipótesis de que los efectos de marcadores SNP están distribuidos normalmente, no están correlacionados y tienen varianzas iguales. Se ha propuesto DAIRRy-BLUP, una implementación en paralelo de RR-BLUP en  memoria distribuida que utiliza el algoritmo de promedio información para la estimación restringida de máxima verosimilitud de los componentes de la varianza.
 
-#Installation
+#Instalación
 
-## Dependencies
+## Dependencias
 
-DAIRRy-BLUP relies heavily on the following software packages, which have to be installed prior to installation of DAIRRy-BLUP. These software packages are all open source, except for the vendor-optimized implementations.
+DAIRRy-BLUP requiere lo siguiente:
 
 1. MPI ([OpenMPI](http://www.open-mpi.org/), [MPICH](http://www.mpich.org/), [IntelMPI](http://software.intel.com/en-us/intel-mpi-library))
-2. [ScaLAPACK](http://www.netlib.org/scalapack/) and all its dependencies BLAS, BLACS, LAPACK, PBLAS (It is recommended to install a [vendor optimized implementation](http://www.netlib.org/scalapack/faq.html#1.3) )
+2. [ScaLAPACK](http://www.netlib.org/scalapack/) and all its dependencies BLAS, BLACS, LAPACK, PBLAS (Recomiendan instalar [vendor optimized implementation](http://www.netlib.org/scalapack/faq.html#1.3) )
 3. HDF5 (http://www.hdfgroup.org/HDF5/)
 4. CMake (http://www.cmake.org/)
 
-Currently, compilation will only work with the Intel MKL libraries installed. When MKL libraries are not available, one must change the MKL libraries in the CMakelists.txt file to the ones which are installed. 
+La version original se compila con la libreria Intel MKL. para esta implementacion de ha utilizado MPICH2. 
 
-## Step-by-step
+# Uso
 
-1. Unpack zip-file or clone git-repository
-2. go into the directory `DAIRRy-BLUP`
-3. make a new directory `build`
-4. go into the directory `build`
-5. type `cmake ..`
-6. type `make`
-
-# Usage
-
-DAIRRy-BLUP only needs an input file to start. A default input file is provided: `defaultinput.txt`, more information on the arguments in the input-file can be found on the wiki.
-
-To launch DAIRRy-BLUP with the default input file using for example 4 processes, the following command should be entered in the `build` directory:
+DAIRRy-BLUP requiere un archivo de entrada: `defaultinput.txt`, 
+una vex generado el ejecurtable se debe ejecutar con el comando
 `mpirun -np 4 ./DAIRRy-BLUP defaultinput.txt`
 
-# Output
+# Salida
 
-DAIRRy-BLUP creates 1 or 2 output-files depending on whether a test-dataset is given in the input file.
-* `estimates.txt`: Lists the estimates for the fixed and random effects. First t values are estimates for the t fixed effects. Last s values are estimates of the s SNP effects 
-* `EBV.txt`: When a test dataset is provided, breeding values are estimated for the individuals based on the estimated fixed and SNP effects and th egenotypes of the test individuals.
+DAIRRy-BLUP crea 1 or 2 archivos segun se haya configurado en el archivo de entrada.
+* `estimates.txt`: Lista las estimaciones de los efectos aleatorios y fijos.  
+* `EBV.txt`: Retorna los valores de cria estimados para cada individuo basado en los valores estimados fijos y los efectos de SNP y los genotipos de prueba de los individuos .
 
-# Version history
+# Versiones
 
 * Version 0.1 (12/2013):
   1. First public release of DAIRRy-BLUP
 
 # Contact
 
-Please feel free to contact arne.deconinck[at]ugent.be for any questions or suggestions. 
-
-[![Analytics](https://ga-beacon.appspot.com/UA-29101865-2/DAIRRy-BLUP/page)](https://github.com/igrigorik/ga-beacon)
+ Correo del Autor arne.deconinck[at]ugent.be. 
