@@ -42,7 +42,7 @@ DAIRRy-BLUP crea 1 or 2 archivos segun se haya configurado en el archivo de entr
 # Versiones
 
 * Version 0.1 (12/2013):
-  1. First public release of DAIRRy-BLUP
+  1. Primera version publica of DAIRRy-BLUP
 
 # Contact
 
