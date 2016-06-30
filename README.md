@@ -46,4 +46,4 @@ DAIRRy-BLUP crea 1 or 2 archivos segun se haya configurado en el archivo de entr
 
 # Contact
 
- Correo del Autor arne.deconinck[at]ugent.be. 
+ Correo del Autor arne.deconinck@ugent.be. 
